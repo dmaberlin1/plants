@@ -21,7 +21,9 @@ class PlantResource extends JsonResource
                 return [
                     'id' => $product->id,
                     'title' => $product->title,
-                    'dose' => $product->pivot->dose,
+                    'pivot' => [
+                        'dose' => $product->pivot->dose
+                    ]
                 ];
             }),
             'created_at' => $this->created_at->toDateTimeString(),

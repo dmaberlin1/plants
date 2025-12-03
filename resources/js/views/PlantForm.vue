@@ -23,7 +23,6 @@
                 </select>
             </div>
 
-            <!-- ✅ НОВОЕ: Секция Protection Products -->
             <div class="form-group">
                 <label>Protection Products</label>
 
@@ -101,7 +100,6 @@ const form = ref({
     protection_products: []
 })
 
-// Доступные продукты (исключая уже выбранные)
 const availableProducts = (currentProductId) => {
     const selectedIds = form.value.protection_products
         .map(p => p.id)
@@ -110,7 +108,6 @@ const availableProducts = (currentProductId) => {
     return protectionProducts.value.filter(p => !selectedIds.includes(p.id))
 }
 
-// Можно ли добавить еще продукты
 const canAddMoreProducts = computed(() => {
     return form.value.protection_products.length < protectionProducts.value.length
 })
@@ -149,7 +146,6 @@ onMounted(async () => {
 
 const handleSubmit = async () => {
     try {
-        // Фильтруем только заполненные продукты
         const validProducts = form.value.protection_products.filter(p => p.id && p.dose)
 
         const dataToSubmit = {
@@ -202,7 +198,6 @@ const goBack = () => router.push('/')
     font-size: 1rem;
 }
 
-/* ✅ НОВЫЕ СТИЛИ для Protection Products */
 .protection-products-list {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
